@@ -1,6 +1,17 @@
 // 自行加入的JS請寫在這裡
 $(function() {
-    // lazyload  
+    $('.radio_grp').each(function(index, el) {
+        $(this).find('input').focus(function(event) {
+            $(this).parent('label').siblings().removeClass('active');
+            $(this).parent('label').addClass('active');
+        });
+        $(this).find('input').blur(function(event) {
+            $(this).parent('label').siblings().removeClass('active');
+            $(this).parent('label').removeClass('active');
+        })
+    });
+
+    // lazyload
     //可以指定你想要的元素做lazyload
     $("img").lazyload({ effect: "fadeIn" });
     // mp_slider
@@ -24,7 +35,6 @@ $(function() {
         cssEase: 'ease'
     });
     // 廣告ad
-
     //customize.js
     $('.adSlider').slick({
         dots: false,
@@ -59,7 +69,6 @@ $(function() {
             }
         }]
     });
-
     //燈箱slick+lightBox組合
     $('.cp_slider').slick({
         dots: true,
@@ -104,7 +113,7 @@ $(function() {
         lazy: true
     });
     // 相簿內容頁面專用
-     $('.Slider-for').on('init reInit afterChange', function(event, slick, currentSlide) {
+    $('.Slider-for').on('init reInit afterChange', function(event, slick, currentSlide) {
         var i = (currentSlide ? currentSlide : 0) + 1;
         $('.controls').html(i + '/' + slick.slideCount);
     });
@@ -127,10 +136,9 @@ $(function() {
         focusOnSelect: true,
         infinite: true,
     });
-
     //不同語系
     var weblang = $('html').attr('lang');
-    if (weblang.substring(0,2) == 'zh') {
+    if (weblang.substring(0, 2) == 'zh') {
         // console.log("中文");
         $('.slick-prev').attr('title', '上一筆');
         $('.slick-next').attr('title', '下一筆');
@@ -138,7 +146,7 @@ $(function() {
         $('.main').find('.accesskey').attr('title', '中央內容區塊');
         $('footer').find('.accesskey').attr('title', '下方功能區塊');
         $('.search').find('.accesskey').attr('title', '關鍵字搜尋：文章關鍵字搜尋');
-    } else if (weblang.substring(0,2) == 'en') {
+    } else if (weblang.substring(0, 2) == 'en') {
         // console.log("英文");
         $('.slick-prev').attr('title', 'previous');
         $('.slick-next').attr('title', 'next');
@@ -146,23 +154,23 @@ $(function() {
         $('.main').find('.accesskey').attr('title', 'content');
         $('footer').find('.accesskey').attr('title', 'footer');
         $('.search').find('.accesskey').attr('title', 'search');
-    } else if (weblang.substring(0,2) == 'vi') {
+    } else if (weblang.substring(0, 2) == 'vi') {
         // console.log("越南");
         $('.slick-prev').attr('title', 'Trước');
         $('.slick-next').attr('title', 'kế tiếp');
-    } else if (weblang.substring(0,2) == 'id') {
+    } else if (weblang.substring(0, 2) == 'id') {
         // console.log("印尼");
         $('.slick-prev').attr('title', 'sebelumnya');
         $('.slick-next').attr('title', 'berikutnya');
-    } else if (weblang.substring(0,2) == 'km') {
+    } else if (weblang.substring(0, 2) == 'km') {
         // console.log("柬埔寨");
         $('.slick-prev').attr('title', 'មុន');
         $('.slick-next').attr('title', 'បន្ទាប់');
-    } else if (weblang.substring(0,2) == 'th') {
+    } else if (weblang.substring(0, 2) == 'th') {
         // console.log("泰文");
         $('.slick-prev').attr('title', 'ก่อน');
         $('.slick-next').attr('title', 'ต่อไป');
-    } else{
+    } else {
         // console.log("沒有判斷");
         $('.slick-prev').attr('title', 'previous');
         $('.slick-next').attr('title', 'next');
@@ -172,6 +180,5 @@ $(function() {
         $('.main').find('.accesskey').attr('title', '中央內容區塊');
         $('footer').find('.accesskey').attr('title', '下方功能區塊');
         $('.search').find('.accesskey').attr('title', '關鍵字搜尋：文章關鍵字搜尋');
-
     }
 });
